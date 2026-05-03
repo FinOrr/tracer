@@ -1,0 +1,208 @@
+.root { display: flex; flex-direction: column; height: 100%; }
+
+/*  Header  */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 36px 20px;
+  border-bottom: 1px solid var(--border-mid);
+  position: sticky;
+  top: 0;
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  z-index: 10;
+}
+
+.headerLeft { flex: 1; min-width: 0; }
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.displayId {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-4);
+}
+
+.dot { color: var(--border); }
+
+.statusPill {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+.pill_verified { background: var(--status-ok-bg);   color: var(--status-ok-text); }
+.pill_stale    { background: var(--status-warn-bg);  color: var(--status-warn-text); }
+.pill_missing  { background: var(--status-err-bg);   color: var(--status-err-text); }
+
+.title {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+  max-width: 560px;
+}
+
+.titleInput {
+  font-family: var(--font-sans);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+  max-width: 560px;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid var(--accent);
+  outline: none;
+  padding: 2px 0;
+  resize: none;
+  background: transparent;
+}
+
+.headerActions { display: flex; gap: 7px; flex-shrink: 0; padding-top: 4px; }
+
+/*  Buttons  */
+.btnGhost {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: none;
+  background: var(--border-mid);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.btnGhost:hover { background: var(--border); }
+
+.btnPrimary {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+.btnPrimary:hover { background: var(--accent-hover); }
+.btnPrimary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/*  Change warning  */
+.changeWarning {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 16px 36px 0;
+  padding: 12px 16px;
+  background: var(--status-warn-bg);
+  border: 1px solid var(--status-warn);
+  border-radius: 8px;
+}
+
+.warnIcon { color: var(--status-warn); font-size: 15px; }
+
+.warnTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--status-warn-text);
+  margin-bottom: 4px;
+}
+
+.warnItem { font-size: 12px; color: var(--text-3); margin-top: 3px; }
+
+.errorBar {
+  margin: 12px 36px 0;
+  padding: 10px 14px;
+  background: var(--status-err-bg);
+  border: 1px solid var(--status-err);
+  border-radius: 7px;
+  font-size: 13px;
+  color: var(--status-err-text);
+}
+
+/*  Chain  */
+.chain { padding: 24px 36px 40px; }
+
+.nodeLabel {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-4);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+
+.connector {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+  margin: 8px 0 8px 18px;
+}
+
+/*  Cards  */
+.card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  background: var(--bg);
+}
+
+.cardOk   { border-left: 3px solid var(--status-ok); }
+.cardWarn { border-left: 3px solid var(--status-warn); background: var(--status-warn-bg); }
+.cardErr  { border-left: 3px solid var(--status-err); background: var(--status-err-bg); }
+.cardEmpty { color: var(--text-4); font-size: 13px; }
+
+.cardId {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-4);
+  margin-bottom: 4px;
+}
+
+.cardText { font-size: 14px; color: var(--text-2); line-height: 1.5; }
+
+.cardMeta { font-size: 11px; color: var(--text-4); margin-top: 6px; }
+
+.cardAction { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+
+/*  Verification fields  */
+.verFields { display: flex; gap: 20px; margin-top: 10px; flex-wrap: wrap; }
+
+.verField { display: flex; flex-direction: column; gap: 2px; }
+
+.verLabel { font-size: 10px; font-weight: 600; color: var(--text-4); text-transform: uppercase; letter-spacing: 0.06em; }
+
+.mono { font-family: var(--font-mono); font-size: 12px; color: var(--accent); }
+
+.staleNote {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--status-warn-text);
+  background: var(--status-warn-bg);
+  border-radius: 4px;
+  padding: 5px 8px;
+}
+
+/*  Evidence  */
+.evidenceRow { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+
+.evidenceFile { font-family: var(--font-mono); font-size: 12px; color: var(--text-2); }
+
+.resultPill { font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 100px; flex-shrink: 0; }
+
+.resultPass { background: var(--status-ok-bg); color: var(--status-ok-text); }
+.resultFail { background: var(--status-err-bg); color: var(--status-err-text); }

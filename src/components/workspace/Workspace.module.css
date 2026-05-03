@@ -1,0 +1,146 @@
+.root {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  background: var(--bg);
+}
+
+.left {
+  flex-shrink: 0;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+
+.leftHeader {
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--border-mid);
+}
+
+.backLink {
+  font-size: 12px; color: var(--accent);
+  text-decoration: none; display: block; margin-bottom: 8px;
+}
+.backLink:hover { text-decoration: underline; }
+
+.projectName { font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.3; }
+
+/*  View toggle (Chain / Trace)  */
+.viewToggle {
+  display: flex;
+  padding: 8px 12px;
+  gap: 4px;
+  border-bottom: 1px solid var(--border-mid);
+}
+
+.viewBtn {
+  font-family: var(--font-sans); font-size: 12px; font-weight: 500;
+  padding: 5px 12px; border-radius: 6px; border: none;
+  cursor: pointer; background: transparent; color: var(--text-4);
+  transition: all 0.12s; flex: 1; text-align: center;
+}
+
+.viewBtnActive { background: var(--border-mid); color: var(--text); }
+
+/*  Filters  */
+.filters {
+  display: flex; gap: 4px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-mid);
+}
+
+.filter {
+  font-family: var(--font-sans); font-size: 12px; font-weight: 500;
+  padding: 4px 12px; border-radius: 100px; border: none;
+  cursor: pointer; background: transparent; color: var(--text-4);
+  display: flex; align-items: center; gap: 5px; transition: all 0.12s;
+}
+
+.filterActive { background: var(--border); color: var(--text); }
+
+.badge {
+  font-size: 10px; font-weight: 700; background: var(--status-err);
+  color: #fff; border-radius: 100px; padding: 0 5px; min-width: 16px; text-align: center;
+}
+
+/*  Add buttons  */
+.addArea {
+  flex-shrink: 0;
+  border-top: 1px solid var(--border-mid);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.addBtn {
+  font-family: var(--font-sans); font-size: 13px; font-weight: 500;
+  color: var(--text-2); background: none; border: none;
+  border-bottom: 1px solid var(--border-mid);
+  padding: 11px 20px; cursor: pointer; text-align: left; width: 100%;
+  transition: background 0.1s, color 0.1s;
+  display: flex; align-items: center; gap: 7px;
+}
+
+.addBtn:hover { background: var(--bg); color: var(--accent); }
+.addBtn:last-child { border-bottom: none; }
+
+/* alias — same style, kept for JSX compatibility */
+.addBtnSecondary {
+  font-family: var(--font-sans); font-size: 13px; font-weight: 500;
+  color: var(--text-2); background: none; border: none;
+  padding: 11px 20px; cursor: pointer; text-align: left; width: 100%;
+  transition: background 0.1s, color 0.1s;
+  display: flex; align-items: center; gap: 7px;
+}
+.addBtnSecondary:hover { background: var(--bg); color: var(--accent); }
+
+/*  Right panel  */
+.resizeHandle {
+  flex-shrink: 0;
+  width: 5px;
+  cursor: col-resize;
+  background: transparent;
+  position: relative;
+  z-index: 5;
+  transition: background 0.15s;
+  user-select: none;
+}
+.resizeHandle:hover { background: var(--accent); opacity: 0.35; }
+
+.resizeHandleCollapsed {
+  width: 18px;
+  cursor: pointer;
+  background: var(--border-mid);
+}
+.resizeHandleCollapsed:hover { background: var(--accent); opacity: 0.5; }
+.resizeHandleCollapsed::after {
+  content: '›';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: var(--text-3);
+  pointer-events: none;
+}
+
+/*  Right panel  */
+.right {
+  flex: 1; background: var(--surface);
+  overflow-y: auto; display: flex; flex-direction: column;
+}
+
+.empty {
+  flex: 1; display: flex; align-items: center;
+  justify-content: center; color: var(--text-4); font-size: 14px;
+}
+
+.emptyHint {
+  font-size: 13px;
+  color: var(--text-4);
+  letter-spacing: 0.01em;
+}

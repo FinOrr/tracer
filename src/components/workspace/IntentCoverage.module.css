@@ -1,0 +1,175 @@
+/* IntentCoverage.module.css */
+
+.root {
+  padding: 28px 36px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.heading {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.sub {
+  font-size: 12px;
+  color: var(--text-4);
+}
+
+.empty {
+  text-align: center;
+  padding: 48px;
+  color: var(--text-4);
+  font-size: 14px;
+}
+
+/*  Intent blocks  */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.intentBlock {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.intentHeader {
+  padding: 14px 18px 12px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border-mid);
+}
+
+.intentMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.intentId {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-4);
+}
+
+.intentText {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+/*  Coverage pill  */
+.coveragePill {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+.pill_ok   { background: var(--status-ok-bg);   color: var(--status-ok-text); }
+.pill_warn { background: var(--status-warn-bg);  color: var(--status-warn-text); }
+.pill_err  { background: var(--status-err-bg);   color: var(--status-err-text); }
+.pill_none { background: var(--border-mid);      color: var(--text-4); }
+
+/*  Progress bar  */
+.bar {
+  height: 4px;
+  background: var(--border-mid);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 100px;
+  transition: width 0.3s ease;
+}
+
+.fill_ok   { background: var(--status-ok); }
+.fill_warn { background: var(--status-warn); }
+.fill_err  { background: var(--status-err); }
+
+/*  Requirement rows  */
+.noReqs {
+  padding: 12px 18px;
+  font-size: 13px;
+  color: var(--text-4);
+}
+
+.reqList {
+  display: flex;
+  flex-direction: column;
+}
+
+.reqRow {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 18px;
+  border: none;
+  border-bottom: 1px solid var(--border-mid);
+  background: var(--surface);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-sans);
+  transition: background 0.1s;
+  width: 100%;
+}
+
+.reqRow:last-child { border-bottom: none; }
+.reqRow:hover { background: var(--bg); }
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.dot_verified { background: var(--status-ok); }
+.dot_stale    { background: var(--status-warn); }
+.dot_missing  { background: var(--status-err); }
+
+.reqId {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-4);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.reqText {
+  font-size: 13px;
+  color: var(--text-2);
+  flex: 1;
+  line-height: 1.4;
+}
+
+.statusLabel {
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.label_verified { color: var(--status-ok-text); }
+.label_stale    { color: var(--status-warn-text); }
+.label_missing  { color: var(--status-err-text); }

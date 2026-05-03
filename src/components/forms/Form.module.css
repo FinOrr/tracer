@@ -1,0 +1,200 @@
+/* Form.module.css , shared styles for all forms */
+
+.root { padding: 32px 40px; max-width: 600px; }
+
+.header { margin-bottom: 28px; }
+
+.heading { font-size: 20px; font-weight: 600; color: var(--text); margin-bottom: 5px; }
+
+.sub { font-size: 13px; color: var(--text-3); line-height: 1.5; }
+
+.form { display: flex; flex-direction: column; gap: 20px; }
+
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+
+.label {
+  font-size: 11px; font-weight: 600; color: var(--text-3);
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+
+.required { color: var(--status-err); margin-left: 2px; }
+
+.optional {
+  color: var(--text-4); font-weight: 400;
+  text-transform: none; letter-spacing: 0; font-size: 11px;
+}
+
+.input, .select, .textarea {
+  font-family: var(--font-sans); font-size: 14px; color: var(--text);
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 9px 12px; outline: none;
+  transition: border-color 0.15s; width: 100%;
+}
+
+.input:focus, .select:focus, .textarea:focus { border-color: var(--accent); }
+
+.textarea { resize: vertical; min-height: 80px; }
+
+.hint { font-size: 11px; color: var(--text-4); line-height: 1.5; }
+
+.error {
+  font-size: 13px; color: var(--status-err-text);
+  background: var(--status-err-bg); border: 1px solid var(--status-err);
+  border-radius: 7px; padding: 10px 13px;
+}
+
+.actions { display: flex; gap: 8px; padding-top: 4px; }
+
+.btnGhost {
+  font-family: var(--font-sans); font-size: 13px; font-weight: 500;
+  padding: 9px 18px; border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface); color: var(--text); cursor: pointer;
+}
+
+.btnGhost:hover { background: var(--border-mid); }
+
+.btnPrimary {
+  font-family: var(--font-sans); font-size: 13px; font-weight: 500;
+  padding: 9px 18px; border-radius: 8px; border: none;
+  background: var(--accent); color: #fff; cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btnPrimary:hover:not(:disabled) { background: var(--accent-hover); }
+.btnPrimary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/*  Preview (live composed text)  */
+.preview {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+.previewLabel {
+  font-size: 10px; font-weight: 600; color: var(--text-4);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;
+}
+
+.previewText { font-size: 14px; color: var(--text); line-height: 1.5; }
+
+/*  RFC 2119 keyword picker  */
+.keywordRow {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.kwBtn {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  padding: 5px 12px; border-radius: 6px;
+  border: 1.5px solid var(--border);
+  background: var(--surface); color: var(--text-3);
+  cursor: pointer; transition: all 0.12s;
+  white-space: nowrap;
+}
+
+.kwBtn:hover { border-color: var(--text-4); color: var(--text); }
+
+.kwActive { font-weight: 700; }
+
+/* Keyword guidance card */
+.kwGuidance {
+  border-left: 3px solid var(--border);
+  padding: 10px 14px;
+  background: var(--bg);
+  border-radius: 0 7px 7px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.kwGuidanceTitle { font-family: var(--font-mono); font-size: 11px; font-weight: 700; }
+
+.kwGuidanceText { font-size: 12px; color: var(--text-2); line-height: 1.5; }
+
+.kwGuidanceVerify {
+  font-size: 11px; color: var(--text-3); line-height: 1.5;
+  display: flex; gap: 6px; align-items: flex-start; margin-top: 3px;
+}
+
+.kwGuidanceVerifyIcon { flex-shrink: 0; font-size: 12px; margin-top: 1px; color: var(--text-4); }
+
+/*  Keyword context banner (verify form)  */
+.kwBanner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+  padding: 10px 14px;
+  border-left: 3px solid var(--border);
+  border-radius: 0 7px 7px 0;
+  background: var(--bg);
+}
+
+.kwBannerPill {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+  padding: 3px 8px; border-radius: 4px; flex-shrink: 0;
+}
+
+.kwBannerText { font-size: 12px; color: var(--text-3); line-height: 1.5; }
+
+/*  Spec card (top of run step)  */
+.specCard {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 8px; padding: 12px 16px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+
+.specRow { display: flex; gap: 12px; align-items: baseline; }
+
+.specLabel {
+  font-size: 10px; font-weight: 600; color: var(--text-4);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  width: 60px; flex-shrink: 0;
+}
+
+.specValue { font-family: var(--font-mono); font-size: 12px; color: var(--accent); }
+
+/*  Result choices  */
+.resultChoices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.resultChoice {
+  padding: 18px; border: 1.5px solid var(--border);
+  border-radius: 10px; cursor: pointer; text-align: center;
+  background: var(--surface); font-family: var(--font-sans);
+  transition: all 0.12s;
+}
+
+.resultChoice:hover { border-color: var(--text-4); }
+
+.choicePass { border-color: var(--status-ok)  !important; background: var(--status-ok-bg)  !important; }
+.choiceFail { border-color: var(--status-err) !important; background: var(--status-err-bg) !important; }
+
+.resultIcon  { font-size: 24px; margin-bottom: 5px; }
+.resultLabel { font-size: 13px; font-weight: 600; }
+
+/*  Success  */
+.success { display: flex; flex-direction: column; gap: 12px; max-width: 440px; padding: 48px 40px; }
+.successIcon  { font-size: 40px; }
+.successTitle { font-size: 22px; font-weight: 600; color: var(--text); }
+.successSub   { font-size: 14px; color: var(--text-3); line-height: 1.6; }
+
+.updateList {
+  border: 1px solid var(--border); border-radius: 10px;
+  overflow: hidden; margin: 4px 0;
+}
+
+.updateRow {
+  display: flex; justify-content: space-between;
+  padding: 11px 16px; border-bottom: 1px solid var(--border-mid); font-size: 13px;
+}
+
+.updateRow:last-child { border-bottom: none; }
+
+.updateKey  { font-family: var(--font-mono); font-size: 12px; color: var(--text-4); }
+.updateOk   { font-weight: 600; color: var(--status-ok-text); }
+.updateErr  { font-weight: 600; color: var(--status-err-text); }
