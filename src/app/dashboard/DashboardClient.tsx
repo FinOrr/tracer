@@ -2,7 +2,7 @@
 // src/app/dashboard/DashboardClient.tsx
 
 import { useState, useTransition } from 'react'
-import { createProject, signOut }  from '@/lib/actions'
+import { createProject }           from '@/lib/actions'
 import type { Project }            from '@/types'
 import styles from './dashboard.module.css'
 
@@ -27,11 +27,6 @@ export function DashboardClient({ projects }: Props) {
     })
   }
 
-  async function handleSignOut() {
-    await signOut()
-    window.location.href = '/auth/signin'
-  }
-
   return (
     <div className={styles.page}>
       <header className={styles.header}>
@@ -41,7 +36,6 @@ export function DashboardClient({ projects }: Props) {
         </div>
         <div className={styles.headerRight}>
           <button className={styles.btnPrimary} onClick={() => setShowForm(true)}>+ New project</button>
-          <button className={styles.btnGhost}   onClick={handleSignOut}>Sign out</button>
         </div>
       </header>
 
