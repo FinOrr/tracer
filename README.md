@@ -1,16 +1,62 @@
-# Keystra Tracer
+# Tracer
 
-Every requirement justified, verified, and proven; no more broken links.
+Local, offline requirements tracing for small engineering projects.
 
-# **Try it out here: [keystra-tracer.vercel.app](https://keystra-tracer.vercel.app/auth/signin)**
+Tracer keeps the verification chain intact: intent, requirement, verification, evidence. 
 
-## The idea
+Edit a requirement and the verification that relied on the old version is immediately marked stale.
 
-Most projects drift, and the rule-of-thumb is that 10% of your project requirements go stale each month. So when a requirement gets edited, the test that covered it no longer applies, and nobody notices until something breaks in the field.
 
-Keystra aims to keep the chain intact: intent, requirement, verification, evidence.  Edit a requirement and anything that relied on the old version is immediately flagged as stale, no more silent breakage.
+## Quick Start
 
-## Yay screenshots!
+```bash
+docker run --rm \
+  -p 127.0.0.1:3000:3000 \
+  -v tracer-data:/data \
+  ghcr.io/finorr/tracer:latest
+```
+
+Open `http://localhost:3000`.
+
+The first image pull requires internet access. After that, the app runs locally and stores its data in the Docker volume mounted at `/data`.
+
+## Data
+
+Tracer stores everything in SQLite at `/data/tracer.db` inside the container.
+
+Back up the database:
+
+```bash
+docker run --rm \
+  -v tracer-data:/data \
+  -v "$PWD":/backup \
+  busybox cp /data/tracer.db /backup/tracer.db
+```
+
+Reset local data:
+
+```bash
+docker volume rm tracer-data
+```
+
+## What It Tracks
+
+Everything is an item: intent, requirement, verification, or risk. Evidence is recorded on verification runs.
+
+Relationships can:
+
+- `refine`: break intent into requirements
+- `verify`: link a verification to what it must prove
+- `mitigate`: connect a risk to its control
+
+The app derives requirement status automatically:
+
+- requirements without verification are unverified
+- verifications without a run are stale
+- editing a requirement makes its verification stale until re-run
+- the trace matrix shows gaps across the project
+
+## Screenshots
 
 <table>
   <tr>
@@ -25,41 +71,35 @@ Keystra aims to keep the chain intact: intent, requirement, verification, eviden
   </tr>
 </table>
 
-## How it's built
+## Local Development
 
-Everything is an item: intent, requirement, verification, risk, evidence.
-
-Relationships can `refine` (breaks intent into requirements), `verify` (links a verification to what it must prove), `produce` (attaches evidence to a run), `mitigate` (connects a risk to its control).
-
-Six rules the engine enforces automatically:
-
-- Requirements must be verifiable
-- Verifications must define pass/fail criteria
-- Verifications must produce evidence
-- Editing a requirement invalidates its verification
-- Risks must be mitigated and verified
-- No orphan items - everything traces back to an intent
-
-## What it doesn't do
-
-No approval workflows, no diagramming, no enterprise reporting. 
-A single engineer should get real value in under an hour.
-
-## Stack
-
-- [Next.js 14](https://nextjs.org) (App Router)
-- [Supabase](https://supabase.com) (auth + database)
-- TypeScript
-
-## Running locally
+Local development requires Node.js 24 or newer.
 
 ```bash
 npm install
-# add your Supabase credentials to .env.local
 npm run dev
 ```
 
-Apply the schema: `db/migrations/001_schema.sql`
+By default, development data is stored in `.data/tracer.db`. Override it with:
+
+```bash
+TRACER_DB_PATH=/path/to/tracer.db npm run dev
+```
+
+Useful checks:
+
+```bash
+npm run typecheck
+npm run build
+docker build -t tracer:local .
+```
+
+## Stack
+
+- Next.js 14
+- React 18
+- SQLite via Node's built-in `node:sqlite`
+- TypeScript
 
 ## License
 
