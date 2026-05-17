@@ -86,7 +86,7 @@ test('tracks requirement links and verification status lifecycle', () => {
   const detail = store.loadRequirementDetail(requirement.id)
   assert.equal(detail?.intent?.display_id, 'INT-001')
   assert.equal(detail?.verification?.display_id, 'VER-001')
-  assert.equal(detail?.verification?.last_run?.evidence_filename, 'startup.log')
+  assert.equal((detail?.verification?.last_run as any)?.evidence_filename, 'startup.log')
 
   const [traceRow] = store.getTraceMatrix(project.id)
   assert.equal(traceRow.verification?.criteria, 'Ready signal under 5000 ms')
